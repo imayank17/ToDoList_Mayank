@@ -1,10 +1,11 @@
 const router = require("express").Router()
+const Todo = require("../models/todo");
 
-// routes will be here
-
-router.get("/",(req, req) =>{
-    res.send("welcome to the home page!")
-
+// routes will be here....
+router.get("/", async(req, res) => {
+    const allTodo = await Todo.find();
+    res.render("index", {todo: allTodo})
 })
+
 
 module.exports = router;
